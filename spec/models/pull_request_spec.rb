@@ -131,25 +131,14 @@ describe PullRequest do
   describe "#config" do
     context "when config file is present" do
       it "returns the contents of custom config" do
-        file_contents = double(:file_contents, content: Base64.encode64("test"))
-        api = double(:github_api, file_contents: file_contents)
-        pull_request = pull_request(api)
+        file_contents = "test: blah"
+        commit = double(:commit, file_content: file_contents)
+        Commit.stub(new: commit)
+        pull_request = pull_request(nil)
 
         config = pull_request.config
 
-        expect(config).to eq("test")
-      end
-    end
-
-    context "when config file is not present" do
-      it "returns nil" do
-        api = double(:github_api)
-        api.stub(:file_contents).and_raise(Octokit::NotFound)
-        pull_request = pull_request(api)
-
-        config = pull_request.config
-
-        expect(config).to be_nil
+        expect(config).to eq("test" => "blah")
       end
     end
   end
