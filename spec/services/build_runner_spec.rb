@@ -11,7 +11,7 @@ describe BuildRunner, '#run' do
 
       expect { build_runner.run }.to change { Build.count }.by(1)
       expect(Build.last).to eq repo.builds.last
-      expect(Build.last.violations).to have_at_least(1).violation
+      expect(Build.last.violations.size).to be >= 1
     end
 
     it 'comments on violations' do

@@ -19,7 +19,7 @@ gem "octokit"
 gem "omniauth-github"
 gem "paranoia", "~> 2.0"
 gem "pg"
-gem "rails", "4.0.4"
+gem "rails", "4.1.0"
 gem "resque", "~> 1.22.0"
 gem "resque-retry"
 gem "resque-sentry"
@@ -43,8 +43,8 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara", "~> 2.1.0"
-  gem "capybara-webkit", "~> 1.1.1"
+  gem "capybara", "~> 2.2.0"
+  gem "capybara-webkit"
   gem "database_cleaner"
   gem "factory_girl_rails"
   gem "launchy"
